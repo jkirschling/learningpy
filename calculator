@@ -1,0 +1,44 @@
+#print('if elif else - Exercise')
+# Create a calculator which handles +,-,*,/ and outputs answer based on the mode/ operator used
+# Hint: use 3 separate inputs 
+# Bonus: Extend functionality with extra mode so it also does celsius to fahrenheit conversion
+# formula is: temp in C*9/5 + 32 = temp in f
+
+#get user input 3*3 4-6 32F 16C 
+def get_user_input():
+    calc = input("Enter Simple Calculation or Temp to Convert - Operators are + - * / C F")
+    return calc
+
+#do calculation on user input
+def calc(calc):
+#check if + operator is used
+    if calc.find("+") != -1:
+    #split on operator and put numbers into list
+        n_list = calc.split("+")
+        #cast numbers into strings to calculate answer 
+        ans = int(n_list[0]) + int(n_list[1])
+    elif calc.find("-") != -1:
+        n_list = calc.split("-")
+        ans = int(n_list[0]) - int(n_list[1])
+    elif calc.find("*") != -1:
+        n_list = calc.split("*")
+        ans = int(n_list[0]) * int(n_list[1])
+    elif calc.find("/") != -1:
+        n_list = calc.split("/")
+        ans = int(n_list[0]) / int(n_list[1])
+    elif calc.find("F") != -1:
+        n_list = calc.split("F")
+        ans = (int(n_list[0]) -32) * .556
+    elif calc.find("C") != -1:
+        n_list = calc.split("C")
+        ans = int(n_list[0]) * 9 / 5 + 32
+    else:
+        print("Operator Not Found!")
+    return ans
+
+#get user input
+user_input = get_user_input()
+#send user input to calc and format the returned answer
+ans = '{:.2f}'.format(calc(user_input))
+#print out answer
+print(f"Your Anaswer is: {ans}")
